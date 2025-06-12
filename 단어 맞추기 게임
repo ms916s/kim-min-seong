@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char word[] = "apple";
+    char guess[20] = "_____";
+    int life = 6;
+    char ch;
+    int correct, i;
+
+    printf("행맨 게임 시작! (단어: %lu글자)\n", strlen(word));
+
+    while (life > 0) {
+        printf("현재 상태: %s (남은 목숨: %d)\n", guess, life);
+        printf("글자 입력: ");
+        scanf(" %c", &ch);
+
+        correct = 0;
+        for (i = 0; i < strlen(word); i++) {
+            if (word[i] == ch && guess[i] == '_') {
+                guess[i] = ch;
+                correct = 1;
+            }
+        }
+
+        if (!correct) {
+            printf("틀렸습니다!\n");
+            life--;
+        }
+
+        if (strcmp(word, guess) == 0) {
+            printf("축하합니다! 정답: %s\n", word);
+            break;
+        }
+    }
+
+    if (life == 0)
+        printf("실패! 정답은 %s\n", word);
+
+    return 0;
+}
