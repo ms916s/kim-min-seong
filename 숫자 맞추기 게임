@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int answer, guess, tries = 0;
+    srand(time(NULL));
+    answer = rand() % 100 + 1;
+
+    printf("1부터 100 사이 숫자를 맞춰보세요.\n");
+
+    do {
+        printf("입력: ");
+        scanf("%d", &guess);
+        tries++;
+
+        if (guess > answer) printf("너무 큽니다.\n");
+        else if (guess < answer) printf("너무 작습니다.\n");
+        else printf("정답! %d번만에 맞췄습니다.\n", tries);
+
+    } while (guess != answer);
+
+    return 0;
+}
