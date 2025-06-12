@@ -1,0 +1,26 @@
+#include <stdio.h>
+#define MAX 3
+
+typedef struct {
+    char name[20];
+    int score;
+} Student;
+
+int main() {
+    Student students[MAX];
+    int i;
+
+    for (i = 0; i < MAX; i++) {
+        printf("%d번째 학생 이름: ", i + 1);
+        scanf("%s", students[i].name);
+        printf("성적 입력: ");
+        scanf("%d", &students[i].score);
+    }
+
+    printf("\n--- 학생 목록 ---\n");
+    for (i = 0; i < MAX; i++) {
+        printf("이름: %s, 성적: %d\n", students[i].name, students[i].score);
+    }
+
+    return 0;
+}
