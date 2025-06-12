@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int balance = 10000;
+    int choice, amount;
+
+    while (1) {
+        printf("\n[ATM 메뉴]\n1. 잔액 확인\n2. 입금\n3. 출금\n4. 종료\n선택: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("현재 잔액: %d원\n", balance);
+                break;
+            case 2:
+                printf("입금할 금액: ");
+                scanf("%d", &amount);
+                balance += amount;
+                printf("입금 완료. 현재 잔액: %d원\n", balance);
+                break;
+            case 3:
+                printf("출금할 금액: ");
+                scanf("%d", &amount);
+                if (amount > balance)
+                    printf("잔액 부족!\n");
+                else {
+                    balance -= amount;
+                    printf("출금 완료. 현재 잔액: %d원\n", balance);
+                }
+                break;
+            case 4:
+                printf("이용해주셔서 감사합니다.\n");
+                return 0;
+            default:
+                printf("잘못된 선택입니다.\n");
+        }
+    }
+}
